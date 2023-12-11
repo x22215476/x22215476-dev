@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Title Here{% endblock title %}</title>
+    {% block extra_head %}{% endblock extra_head %}
+    <style>
+        body {
+            background-image: url('/static/images/wallp.avif'); /* Replace with the path to your background image */
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            color: black; /* Set text color to white for better readability on the image */
+        }
+
+        header {
+            background-color: #004d00; /* Dark green background for the header */
+            padding: 10px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            color: white; /* Text color for the links */
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: white; /* Text color for the links */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a.active {
+            background-color: #45a049; /* Darker green color for the active link */
+        }
+
+        .topnav div {
+            float: right;
+            display: block;
+            color: black; /* Text color for the signed-in user section */
+            padding: 14px 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" href="/">Home</a> |
+            {% if user.is_authenticated %}
+                <div>You are signed in as {{ user.username }}...
+                    <a href="{% url 'sign_out' %}">Sign out</a>
+                </div>
+            {% else %}
+                <a href="{% url 'sign_in' %}">Sign in</a> |
+                <a href="{% url 'users:sign_up' %}">Sign up</a>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

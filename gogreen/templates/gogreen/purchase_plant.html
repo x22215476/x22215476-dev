@@ -1,0 +1,28 @@
+{% extends "gogreen/base_generic.html" %}
+{% block content %}
+<!-- gogreen/purchase_plant.html -->
+<h2>Purchase Plant</h2>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <!-- Display information about the plant -->
+  <h3>{{ plant.name }}</h3>
+  <p>Botanical Name: {{ plant.botanical_name }}</p>
+  <p>Cost: {{ plant.cost }}</p>
+
+  <br>
+
+  <!-- Purchase details -->
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" name="quantity" min="1" required>
+
+  <br>
+
+  <!-- Other purchase details (if any) can be added here -->
+
+  <br>
+
+</form>
+ <a href="{% url 'gogreen:thank_you'%}"><button type="submit">Purchase</button></a>
+ {% endblock content %}

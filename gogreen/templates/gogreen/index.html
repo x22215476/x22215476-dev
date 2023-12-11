@@ -1,0 +1,56 @@
+{% extends "gogreen/base_generic.html" %}
+{% block content %}
+  <style>
+    body {
+      background-image: url('/static/images/wallp.avif'); /* Replace with the path to your background image */
+      background-size: cover;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+      color: white; /* Set text color to white for better readability on the image */
+    }
+
+    h1, h2 {
+      color: green; /* You can adjust the color */
+    }
+
+    button {
+      background-color: #4CAF50; /* Green color for buttons */
+      color: white;
+      width: 150px; /* Set the width */
+      height: 150px; /* Set the height */
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none; /* Remove the border for a cleaner look */
+      border-radius: 8px;
+      overflow: hidden; /* Ensure the background image does not overflow */
+    }
+
+    /* Background images for buttons */
+    button.sell-button {
+      background: url('/static/images/sell.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    button.buy-button {
+      background: url('/static/images/buy.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    /* Hover effect for buttons */
+    button:hover {
+      background-color: #45a049; /* Darker green color on hover */
+    }
+  </style>
+
+  <h1>Go Green</h1>
+  <h2>Buy and Sell your samplings</h2>
+  
+
+  <a href="{% url 'gogreen:create_listing' %}"><button class="sell-button">Sell Samplings</button></a>
+  <a href="{% url 'gogreen:plant_list' %}"><button class="buy-button">Buy Samplings</button></a>
+{% endblock content %}

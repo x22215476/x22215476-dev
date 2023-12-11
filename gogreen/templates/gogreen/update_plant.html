@@ -1,0 +1,12 @@
+{% extends "gogreen/base_generic.html" %}
+{% block content %}
+<!-- gogreen/update_plant.html -->
+<h1>Edit Plant</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Plant</button>
+</form>
+
+{% endblock content %}

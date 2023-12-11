@@ -1,0 +1,10 @@
+<!-- gogreen/delete_plant.html -->
+<h2>Delete Plant</h2>
+
+<p>Are you sure you want to delete "{{ plant.name }}"?</p>
+
+<form method="post" action="{% url 'gogreen:delete_plant' plant.id %}">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+  <a href="{% url 'gogreen:plant_list' %}"><button>Cancel</button></a>
+</form>

@@ -1,0 +1,26 @@
+{% extends "gogreen/base_generic.html" %}
+{% block content %}
+<!-- gogreen/plant_list.html -->
+<h1>Plant List</h1>
+
+{% if plants %}
+    <ul>
+        {% for plant in plants %}
+            <li>
+                <strong>Name:</strong> {{ plant.name }}<br>
+                <strong>Common Name:</strong> {{ plant.common_name }}<br>
+                <strong>Botanical Name:</strong> {{ plant.botanical_name }}<br>
+                <strong>Cost:</strong> ${{ plant.cost }}<br>
+                <!-- Add an "Edit" button -->
+                <a href="{% url 'gogreen:update_plant' plant_id=plant.id %}"><button>Edit</button></a>
+                <a href="{% url 'gogreen:purchase_plant' plant_id=plant.id %}"><button>Buy</button></a>
+                <a href="{% url 'gogreen:delete_plant' plant_id=plant.id %}"><button>Delete</button></a>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No plants available.</p>
+{% endif %}
+
+{% endblock content %}
