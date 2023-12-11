@@ -25,7 +25,7 @@ SECRET_KEY = '8&t-1tg&&mpa$5b@zkao-_!b_+kcs!hi1w=#2-8-n@iknv1q--'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['f38a693cd9624c8098e0af1863466fc7.vfs.cloud9.eu-west-1.amazonaws.com','127.0.0.1','x22215476-gogreen-env.eba-gecs5f7p.eu-west-3.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['f38a693cd9624c8098e0af1863466fc7.vfs.cloud9.eu-west-1.amazonaws.com','127.0.0.1','x22215476-green-env.eba-acnjxipd.sa-east-1.elasticbeanstalk.com']
 
 
 # Application definition
