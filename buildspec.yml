@@ -26,9 +26,11 @@ phases:
   build:
     commands:
       - if [[ $(jq -r '.projectStatus.status' analysis.json) = "ERROR" ]] ; then CODEBUILD_BUILD_SUCCEEDING=0; fi
-      
-  #serviceRole: arn:aws:iam::250738637992:role/service-role/CodeBuildServiceRole
   
+      
+    serviceRole: arn:aws:iam::250738637992:role/service-role/CodeBuildServiceRole
+  
+
 artifacts:
   files:
     - '**/*'
