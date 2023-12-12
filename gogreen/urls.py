@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import index, show, create_listing, plant_list, purchase_plant, update_plant, delete_plant, thank_you
+#from .views import index, show, create_listing, plant_list, purchase_plant, update_plant, delete_plant, thank_you
 
 app_name = 'gogreen'
 
