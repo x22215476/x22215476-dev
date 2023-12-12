@@ -89,7 +89,7 @@ def delete_plant(request, plant_id):
 
     if request.method == 'POST':
         plant.delete()
-        return redirect('gogreen:plant_list')  # Redirect to the plant list after deletion
+        return redirect('gogreen:plant_list') 
 
     return render(request, 'gogreen/delete_plant.html', {'plant': plant})
     
@@ -99,7 +99,7 @@ def delete_order(request, order_id):
 
     if request.method == 'POST':
         order.delete()
-        return redirect('gogreen:index')  # Redirect to the home page after deleting the order
+        return redirect('gogreen:index')  
 
     return render(request, 'gogreen/delete_order.html', {'order': order})
 
@@ -111,31 +111,22 @@ class PurchasePlantView(View):
     template_name = 'gogreen/purchase_plant.html'
 
     def get(self, request, plant_id):
-        # Retrieve the plant object
+        
         plant = get_object_or_404(Plants, id=plant_id)
-
-        # Create a new PurchaseForm instance
         form = PurchaseForm()
-
-        # Render the purchase plant form with the plant details and the form
         return render(request, self.template_name, {'plant': plant, 'form': form})
 
     def post(self, request, plant_id):
-        # Retrieve the plant object
         plant = get_object_or_404(Plants, id=plant_id)
-
-        # Process the form submission
         form = PurchaseForm(request.POST)
         if form.is_valid():
             quantity = form.cleaned_data['quantity']
             total_cost = plant.cost * quantity
-
-            # Create an Order for the user
             order = Order.objects.create(user=request.user, total_cost=total_cost)
             order.save()
 
-            # Redirect to the thank-you page with the order_id
+           
             return redirect('gogreen:thank_you', order_id=order.id)
 
-        # If the form is not valid, render the purchase plant form with errors
+        
         return render(request, self.template_name, {'plant': plant, 'form': form})
