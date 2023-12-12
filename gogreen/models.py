@@ -15,7 +15,7 @@ class Plants(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    plants = models.ManyToManyField(Plants)  # Change to ManyToManyField
+    plants = models.ManyToManyField(Plants)  
     quantity = models.IntegerField(default=1)
     total_cost = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
